@@ -1,0 +1,1 @@
+create table vehicle (id integer not null auto_increment, date_of_purchase datetime, days_on_lot integer, description varchar(255), img tinyblob, kilometers_on_meter integer, price double precision, vehicle_make varchar(255), vehicle_model varchar(255), vehicle_year integer, primary key (id)) engine=MyISAM;
