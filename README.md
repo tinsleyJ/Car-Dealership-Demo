@@ -1,30 +1,31 @@
 # Car-Dealership-Demo
 
+
 Incomplete
 
-Features complete:
+- Features complete:
 
-Add vehicle to database
+- Add vehicle to database
 
-Register account
+- Register account
 
-Carousel of inventory on home page
+- Carousel of inventory on home page
 
-Success/Thank-you Pages
+- Success/Thank-you Pages
 
-Get All vehicles
+- Get All vehicles
 
 
 To-do:
 
-Login/Logout
+- Login/Logout
 
-Render inventory with get all
+- Render inventory with get all
 
-120 day bidding options
+- 120 day bidding options
 
-transaction history
+- Transaction history
 
-Search inventory by make/model/year/km
+- Search inventory by make/model/year/km
 
-archive sold vehicles
+- Archive sold vehicles
