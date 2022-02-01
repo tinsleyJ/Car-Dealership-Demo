@@ -3,6 +3,8 @@ package com.carDealershipDemo.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -41,6 +43,7 @@ public class Vehicle {
     private String description;
 
     @Column(name = "date_of_purchase")
+    @DateTimeFormat(pattern = "dd.MM.yyyy")
     private Date dateOfPurchase;
 
     @Column(name = "days_on_lot")

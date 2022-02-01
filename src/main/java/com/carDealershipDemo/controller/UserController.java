@@ -25,41 +25,45 @@ public class UserController {
     }
 
     @RequestMapping(value = "/register")
-    public String registerUser(User user, Model model) {
+    public String getRegisterPage(User user, Model model) {
         model.addAttribute("user", user);
         return "register";
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ModelAndView addUser(User user, Model model) {
+    public ModelAndView processRegistration(User user) {
         userRepository.save(user);
         return new ModelAndView("thank-you", "user", new User());
     }
 
     @RequestMapping("/login")
-    public String loginWelcome(Model model) {
-        model.addAttribute("user", "Please enter your login details.");
-        return "login";
+    public ModelAndView getLoginPage() {
+
+        return new ModelAndView("login", "Please enter your login details.", new User());
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String login(Model model, @ModelAttribute("login") User user) {
-        if (user != null && user.getUsername() != null & user.getPassword() != null) {
-            if (user.getUsername().equals("username") && user.getPassword().equals("password")) {
-                model.addAttribute("msg", user.getUsername());
-                return "success";
+    public ModelAndView processLogin(Model model, @ModelAttribute("login") User user) {
+
+        String username = user.getUsername();
+        String password = user.getPassword();
+
+        if (username != null & user.getPassword() != null) {
+            if (username.equals("inputUsername") && password.equals("inputPassword")) {
+                model.addAttribute("user", username);
+                return new ModelAndView("success");
             } else {
                 model.addAttribute("error", "Invalid Credentials");
-                return "login";
+                return new ModelAndView("login");
             }
         } else {
             model.addAttribute("error", "Please fill-in valid Username and password");
-            return "login";
+            return new ModelAndView("login");
         }
     }
 
     @RequestMapping(value = "/logout")
-    public String logout(HttpServletRequest request) {
+    public String processLogout(HttpServletRequest request) {
         request.getSession().invalidate();
         return "index";
     }

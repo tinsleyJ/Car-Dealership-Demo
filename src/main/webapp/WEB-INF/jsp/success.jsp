@@ -20,27 +20,9 @@
             crossorigin="anonymous"></script>
 
 </head>
-<nav class="navbar navbar-expand-md">
-    <a class="navbar-brand" href="index">Car Dealership</a>
-    <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link" href="add-vehicle">Add Vehicle</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="vehicle-list">Vehicle List</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="register">Register</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="login">Log In</a>
-        </li>
-    </ul>
-</nav>
-<body>
+
+<body class="container">
+<jsp:include page="layout.jsp"/>
 
 <h2>Hello ${msg}</h2>
 You have successfully logged in.
