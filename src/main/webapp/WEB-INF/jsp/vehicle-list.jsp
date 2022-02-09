@@ -23,26 +23,44 @@
 <table class="table table-striped table-hover table-bordered">
     <thead class="table-primary">
     <tr>
+        <th>View</th>
+        <th>Image</th>
         <th>Make</th>
         <th>Model</th>
         <th>Year</th>
-        <th>Kilometers</th>
+        <th>Odometer</th>
         <th>Description</th>
         <th>Days on Lot</th>
-        <th>Image</th>
+        <th>Price</th>
+        <th>Delete</th>
+
     </tr>
     </thead>
     <c:forEach var="vehicle" items="${results}">
         <tr>
-            <td>${vehicle.vehicleMake}</td>
+            <td>${vehicle.id}
+                <form:form action="/vehicle/{vehicleId}" method="GET" modelAttribute="results">
+                    <input
+                            type="submit"
+                            class="btn btn-primary"
+                            name="vehicleId">
+
+                </form:form></td>
+            <td><img width="100" height="100" alt="..." src="/getImageById/${vehicle.img}"/></td>
+            <td>${vehicle.vehicleMake}
+
+            </td>
             <td>${vehicle.vehicleModel}</td>
             <td>${vehicle.vehicleYear}</td>
-            <td>${vehicle.kilometersOnMeter}</td>
+            <td> ${vehicle.kilometersOnMeter} km</td>
             <td>${vehicle.description}</td>
             <td>${vehicle.daysOnLot}</td>
-            <td><img alt="..." src="${vehicle.img}"></td>
+            <td>$${vehicle.price}</td>
+            <td><input type="button" class="btn btn-danger" value="Delete">
+            </td>
         </tr>
     </c:forEach>
+
 </table>
 
 </body>

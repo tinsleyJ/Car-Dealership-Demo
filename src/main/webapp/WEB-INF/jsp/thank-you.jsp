@@ -18,7 +18,7 @@
 <h3>Thank you</h3>
 
 <p>Great, here is a link to the vehicle you just added: </p><br/>
-${vehicle}
+<jsp:include page="vehicle.jsp"/>
 
 </body>
 </html>

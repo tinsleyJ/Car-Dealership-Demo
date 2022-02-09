@@ -1,29 +1,18 @@
 package com.carDealershipDemo.service;
 
 import com.carDealershipDemo.entity.Vehicle;
-import org.springframework.http.ResponseEntity;
-
-import java.util.ArrayList;
 
 public interface VehicleService {
 
+    Iterable<Vehicle> listVehiclesByMake(String vehicleMake);
 
-    ResponseEntity<byte[]> getImage(Vehicle vehicle);
+    Iterable<Vehicle> listVehiclesByModel(String vehicleModel);
 
-    ArrayList<Vehicle> findByModel(String searchTerm);
+    Iterable<Vehicle> listVehiclesByYear(int vehicleYear);
 
-    ArrayList<Vehicle> findByDescription(String searchTerm);
+    Iterable<Vehicle> listVehiclesByKilometers(int vehicleKilometers);
 
-    ArrayList<Vehicle> findByYear(int searchTerm);
+    Iterable<Vehicle> listVehiclesByPrice(double vehiclePrice);
 
-    ArrayList<Vehicle> findByKilometersOnMeter(int searchKilometers);
-
-    ArrayList<Vehicle> findByDaysOnLot(int searchDays);
-
-    ArrayList<Vehicle> findByMake(String searchTerm);
-
-    ArrayList<Vehicle> findByPrice(double searchAmount);
-
-    public ArrayList<Vehicle> vehicleSearch(Vehicle vehcile);
-
+    Iterable<Vehicle> listVehiclesById(int id);
 }

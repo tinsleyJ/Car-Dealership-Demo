@@ -1,31 +1,32 @@
 package com.carDealershipDemo.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @CrossOrigin
-@RestController
+@Controller
 public class WelcomeController {
 
-    @RequestMapping(value = "/")
-    public ModelAndView home() {
-        return new ModelAndView("index");
+    @RequestMapping("/")
+    public String home() {
+        return "index";
     }
 
-    @RequestMapping(value = "/index")
-    public ModelAndView index() {
-        return new ModelAndView("index");
+    @RequestMapping("/index")
+    public String index() {
+        return "index";
     }
 
-    @RequestMapping(value = "/thank-you")
-    public ModelAndView thankYou() {
-        return new ModelAndView("thank-you");
+    @RequestMapping("/thank-you")
+    public String thankYou() {
+        return "thank-you";
     }
 
-    @RequestMapping(value = "/success")
-    public ModelAndView success() {
-        return new ModelAndView("success");
+    @RequestMapping("/success")
+    public String success() {
+        return "success";
     }
 
 }

@@ -6,43 +6,37 @@ import com.carDealershipDemo.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin
 @Controller
 public class VehicleController {
 
-    @Autowired
     VehicleRepository vehicleRepository;
-
-    @Autowired
     VehicleService vehicleService;
 
-    public VehicleController(VehicleRepository vehicleRepository, VehicleService vehicleService) {
+    @Autowired
+    public VehicleController(VehicleService vehicleService, VehicleRepository vehicleRepository) {
         this.vehicleRepository = vehicleRepository;
         this.vehicleService = vehicleService;
     }
 
-    @RequestMapping("/add-vehicle")
+    @GetMapping("/add-vehicle")
     public String getAddVehiclePage(Model model, Vehicle vehicle) {
         model.addAttribute("vehicle", vehicle);
         return "add-vehicle";
     }
 
-    @RequestMapping(value = "/add-vehicle", method = RequestMethod.POST)
+    @PostMapping("/add-vehicle")
     public ModelAndView processAddVehicle(Vehicle vehicle) {
         vehicleRepository.save(vehicle);
         return new ModelAndView("thank-you", "vehicle", new Vehicle());
     }
 
-    @RequestMapping("/vehicle-list")
+    @GetMapping("/vehicle-list")
     public String getAllVehiclesPage(Model model) {
         List<Vehicle> list = vehicleRepository.findAll();
         model.addAttribute("results", list);
@@ -55,19 +49,42 @@ public class VehicleController {
         return "search";
     }
 
-    @RequestMapping(value = "/search", method = RequestMethod.POST)
-    public String processSearch(@ModelAttribute("searchTerm") Model model, Vehicle vehicle) {
-        ArrayList<Vehicle> list = vehicleService.vehicleSearch(vehicle);
-        model.addAttribute("results", list);
-        return ("vehicle-list");
+    @GetMapping("/vehicle/{vehicleId}")
+    public String getVehiclePage(@RequestParam(value = "vehicleId", required = false) int id, Model model) {
+        model.addAttribute("results", vehicleService.listVehiclesById(id));
+        return "vehicle";
     }
 
-    @RequestMapping(value = "/biddable")
-    public ModelAndView biddableVehicles(Model model) {
-        List<Vehicle> list = vehicleRepository.getBiddableVehicles();
-        model.addAttribute("results", list);
-        return new ModelAndView("vehicle-list", "results", new Vehicle());
+    @GetMapping("/search/make/{vehicleMake}")
+    public String performVehicleSearchByMake(@RequestParam(value = "vehicleMake", required = false) String vehicleMake, Model model) {
+        model.addAttribute("results", vehicleService.listVehiclesByMake(vehicleMake));
+        return "vehicle-list";
     }
+
+    @GetMapping("/search/model/{vehicleModel}")
+    public String performVehicleSearchByModel(@RequestParam(value = "vehicleModel", required = false) String vehicleModel, Model model) {
+        model.addAttribute("results", vehicleService.listVehiclesByModel(vehicleModel));
+        return "vehicle-list";
+    }
+
+    @GetMapping("/search/year/{vehicleYear}")
+    public String performVehicleSearchByYear(@RequestParam(value = "vehicleYear", required = false) int vehicleYear, Model model) {
+        model.addAttribute("results", vehicleService.listVehiclesByYear(vehicleYear));
+        return "vehicle-list";
+    }
+
+    @GetMapping("/search/kilometers/{vehicleKilometers}")
+    public String performVehicleSearchByKilometers(@RequestParam(value = "vehicleKilometers", required = false) int vehicleKilometers, Model model) {
+        model.addAttribute("results", vehicleService.listVehiclesByKilometers(vehicleKilometers));
+        return "vehicle-list";
+    }
+
+    @GetMapping("/search/price/{vehiclePrice}")
+    public String performVehicleSearchByPrice(@RequestParam(value = "vehiclePrice", required = false) double vehiclePrice, Model model) {
+        model.addAttribute("results", vehicleService.listVehiclesByPrice(vehiclePrice));
+        return "vehicle-list";
+    }
+
 }
 
 

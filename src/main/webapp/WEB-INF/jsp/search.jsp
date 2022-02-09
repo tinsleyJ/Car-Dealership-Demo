@@ -27,14 +27,83 @@
             <h3 class="modal-header">Search inventory</h3>
         </div>
     </header>
-    <form:form action="/search" method="POST" modelAttribute="results">
-            <span class="input-group input-group-sm mb-3">
-                <span class="input-group-text" id="inputSearchTerm">Search Term</span>
-                <input type="text" class="form-control">
-            </span>
-        <input type="submit" class="btn btn-primary" value="Submit" name="searchTerm">
-    </form:form>
-
+    <form:form action="/search/make/{vehicleMake}" method="GET" modelAttribute="results">
+    <table>
+        <tr>
+            <td class="input-group input-group-sm mb-3">
+                <span class="input-group-text" id="inputSearchMake">Vehicle Make</span>
+                <label>
+                    <input type="text"
+                           class="form-control"
+                           name="vehicleMake">
+                </label>
+                <input type="submit"
+                       class="btn btn-primary"
+                       value="Submit">
+            </td>
+        </tr>
+        </form:form>
+        <form:form action="/search/model/{vehicleModel}" method="GET" modelAttribute="results">
+            <tr>
+                <td class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputSearchModel">Vehicle Model</span>
+                    <label>
+                        <input type="text"
+                               class="form-control"
+                               name="vehicleModel">
+                    </label>
+                    <input type="submit"
+                           class="btn btn-primary"
+                           value="Submit">
+                </td>
+            </tr>
+        </form:form>
+        <form:form action="/search/year/{vehicleYear}" method="GET" modelAttribute="results">
+            <tr>
+                <td class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputSearchYear">Manufactured After</span>
+                    <label>
+                        <input type="number"
+                               class="form-control"
+                               name="vehicleYear">
+                    </label>
+                    <input type="submit"
+                           class="btn btn-primary"
+                           value="Submit">
+                </td>
+            </tr>
+        </form:form>
+        <form:form action="/search/kilometers/{vehicleKilometers}" method="GET" modelAttribute="results">
+            <tr>
+                <td class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputSearchKilometers">Max Kilometers</span>
+                    <label>
+                        <input type="number"
+                               class="form-control"
+                               name="vehicleKilometers">
+                    </label>
+                    <input type="submit"
+                           class="btn btn-primary"
+                           value="Submit">
+                </td>
+            </tr>
+        </form:form>
+        <form:form action="/search/price/{vehiclePrice}" method="GET" modelAttribute="results">
+            <tr>
+                <td class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputSearchPrice">Max Price</span>
+                    <label>
+                        <input type="number"
+                               class="form-control"
+                               name="vehiclePrice">
+                    </label>
+                    <input type="submit"
+                           class="btn btn-primary"
+                           value="Submit">
+                </td>
+            </tr>
+        </form:form>
+    </table>
 </div>
 </body>
 </html>

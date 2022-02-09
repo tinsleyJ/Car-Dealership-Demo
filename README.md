@@ -1,9 +1,6 @@
 # Car-Dealership-Demo
 
-
-Incomplete
-
-- Features complete:
+Features complete:
 
 - Add vehicle to database
 
@@ -15,17 +12,14 @@ Incomplete
 
 - Get All vehicles
 
+- Render inventory/searches
 
 To-do:
 
 - Login/Logout
 
-- Render inventory with get all
-
 - 120 day bidding options
 
 - Transaction history
-
-- Search inventory by make/model/year/km
 
 - Archive sold vehicles
